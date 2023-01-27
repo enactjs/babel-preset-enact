@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/enactjs/babel-preset-enact.git"
   },
-  "homepage": "https://enactjs.com",
+  "homepage": "https://github.com/enactjs/babel-preset-enact.git",
   "license": "Apache-2.0",
   "files": [
     "index.js"
