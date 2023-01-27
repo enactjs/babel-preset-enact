@@ -1,3 +1,3 @@
 ## unreleased
 
-* Initial internal release
+* Initial release
