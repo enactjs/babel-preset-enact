@@ -25,6 +25,7 @@
     "arrowParens": "avoid"
   },
   "dependencies": {
+    "@babel/core": "^7.20.12",
     "@babel/plugin-proposal-decorators": "^7.20.13",
     "@babel/plugin-proposal-export-default-from": "^7.18.10",
     "@babel/plugin-transform-react-inline-elements": "^7.18.6",
