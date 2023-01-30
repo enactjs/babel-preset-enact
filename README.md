@@ -1,6 +1,6 @@
 # babel-preset-enact
 
-> A set of babel preset designed by the Enact team.
+> This package includes the Babel preset used by Enact.
 
 ## Installation
 
