@@ -2,13 +2,23 @@
 
 > This package includes the Babel preset used by Enact.
 
+## Usage
+
+Reference this module from your `babel.config.js`.
+
+```js
+module.exports = require('babel-preset-enact');
+```
+
+For more information (including `babel.config.js` setup), please see the [babel docs](https://babeljs.io/docs/config-files).
+
 ## Installation
 
 ```sh
 $ npm i --save babel-preset-enact
 ```
 
-### Copyright and License Information
+## Copyright and License Information
 
 Unless otherwise specified, all content, including all source code files and
 documentation files in this repository are:
