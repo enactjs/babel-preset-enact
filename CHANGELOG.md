@@ -1,3 +1,7 @@
+## unreleased
+
+* Documented `Usage` and `Copylight and License Information` in README.md.
+
 ## 0.1.1 (February 17, 2023)
 
 * Updated Babel support:
