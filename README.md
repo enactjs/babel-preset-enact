@@ -2,28 +2,38 @@
 
 > This package includes the Babel preset used by Enact.
 
-## Usage
+## Usage in Enact projects created by Enact CLI
 
-Reference this module from your `babel.config.js`.
+The easiest way to use this configuration is with [Enact CLI](https://github.com/enactjs/cli), which includes it by default. You don’t need to install it separately in Enact projects.
 
-```js
-module.exports = require('babel-preset-enact');
-```
+## Usage Outside of Enact projects
 
-For more information (including `babel.config.js` setup), please see the [babel docs](https://babeljs.io/docs/config-files).
+If you want to use this Babel preset in a project not built with Enact CLI, you can install it with the following steps.
 
-## Installation
+First, [install Babel](https://babeljs.io/docs/setup/).
+
+Then install babel-preset-enact.
 
 ```sh
-$ npm i --save babel-preset-enact
+npm install babel-preset-enact --save-dev
 ```
+
+Then create a file named `.babelrc` with following contents in the root folder of your project:
+
+```json
+{
+  "presets": ["enact"]
+}
+```
+
+For more information including `.babelrc` setup, please see the [babel docs](https://babeljs.io/docs/config-files)
 
 ## Copyright and License Information
 
 Unless otherwise specified, all content, including all source code files and
 documentation files in this repository are:
 
-Copyright (c) 2020-2022 LG Electronics
+Copyright (c) 2020-2023 LG Electronics
 
 Unless otherwise specified or set forth in the NOTICE file, all content,
 including all source code files and documentation files in this repository are:
