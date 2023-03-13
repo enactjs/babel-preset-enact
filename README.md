@@ -22,7 +22,7 @@ Then create a file named `.babelrc` with following contents in the root folder o
 
 ```json
 {
-  "presets": ["enact"]
+  "presets": ["babel-preset-enact"]
 }
 ```
 
