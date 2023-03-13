@@ -26,7 +26,7 @@ Then create a file named `.babelrc` with following contents in the root folder o
 }
 ```
 
-For more information including `.babelrc` setup, please see the [babel docs](https://babeljs.io/docs/config-files)
+For more information including `.babelrc` setup, please see the [Babel docs](https://babeljs.io/docs/config-files)
 
 ## Copyright and License Information
 
