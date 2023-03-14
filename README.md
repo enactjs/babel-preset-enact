@@ -18,7 +18,7 @@ Then install babel-preset-enact.
 npm install babel-preset-enact --save-dev
 ```
 
-Then create a file named `.babelrc` with following contents in the root folder of your project:
+Then create a file named `.babelrc` with the following contents in the root folder of your project:
 
 ```json
 {
@@ -26,7 +26,7 @@ Then create a file named `.babelrc` with following contents in the root folder o
 }
 ```
 
-For more information including `.babelrc` setup, please see the [Babel docs](https://babeljs.io/docs/config-files)
+For more information including `.babelrc` setup, please see the [Babel docs](https://babeljs.io/docs/config-files).
 
 ## Copyright and License Information
 
