@@ -118,9 +118,9 @@ module.exports = function (api) {
 			env === 'production' && !es5Standalone && require('@babel/plugin-transform-react-inline-elements').default,
 			env === 'production' &&
 				!es5Standalone && [
-				require('babel-plugin-transform-react-remove-prop-types').default,
-				{removeImport: true}
-			]
+					require('babel-plugin-transform-react-remove-prop-types').default,
+					{removeImport: true}
+				]
 		].filter(Boolean),
 		overrides: [
 			{
