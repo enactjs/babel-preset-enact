@@ -7,9 +7,6 @@ module.exports = {
 		document: true
 	},
 	env: {
-		es6: true, // Enables ES6 globals
-		'shared-node-browser': true, // restrict to common globals to preserve isomorphic support
-		commonjs: true,
 		node: true
 	},
 	extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
