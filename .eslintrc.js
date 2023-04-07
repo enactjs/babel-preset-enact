@@ -104,9 +104,6 @@ module.exports = {
 		],
 		'@babel/no-unused-expressions': 'warn',
 
-		// prettier plugin option to use quoteProps: 'consistent' https://prettier.io/docs/en/options.html#quote-props
-		'prettier/prettier': ['error', {quoteProps: 'consistent'}],
-
 		'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
 		'import/named': 'error',
 		'import/first': 'warn',
