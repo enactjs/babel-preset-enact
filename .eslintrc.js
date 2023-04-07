@@ -21,8 +21,8 @@ module.exports = {
 	plugins: ['@babel', 'import'],
 	rules: {
 		'block-scoped-var': 'warn',
-		curly: ['warn', 'multi-line'],
-		eqeqeq: ['warn', 'smart'],
+		'curly': ['warn', 'multi-line'],
+		'eqeqeq': ['warn', 'smart'],
 		'new-parens': 'warn',
 		'no-alert': 'warn',
 		'no-array-constructor': 'warn',
@@ -104,6 +104,9 @@ module.exports = {
 		],
 		'@babel/no-unused-expressions': 'warn',
 
+		// prettier plugin option to use quoteProps: 'consistent' https://prettier.io/docs/en/options.html#quote-props
+		'prettier/prettier': ['error', {quoteProps: 'consistent'}],
+
 		'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
 		'import/named': 'error',
 		'import/first': 'warn',
@@ -114,7 +117,7 @@ module.exports = {
 			'warn',
 			{
 				'newlines-between': 'never',
-				groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index']
+				'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index']
 			}
 		]
 	}
