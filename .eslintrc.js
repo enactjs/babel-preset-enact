@@ -12,12 +12,11 @@ module.exports = {
 	extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
 	parser: '@babel/eslint-parser',
 	parserOptions: {
-		ecmaFeatures: {
-			jsx: true
-		},
-		ecmaVersion: 'latest',
 		sourceType: 'module',
-		requireConfigFile: false
+		requireConfigFile: false,
+		babelOptions: {
+			presets: [require.resolve('./index.js')]
+		}
 	},
 	plugins: ['@babel', 'import'],
 	rules: {
