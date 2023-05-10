@@ -50,7 +50,7 @@ module.exports = function (api) {
 					],
 					forceAllTransforms: es5Standalone,
 					useBuiltIns: 'entry',
-					corejs: '3.24'
+					corejs: '3.19'
 				}
 			],
 			[
