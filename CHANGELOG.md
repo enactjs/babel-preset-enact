@@ -1,4 +1,4 @@
-## unreleased
+## 0.1.2 (May 17, 2023)
 
 * Updated `core-js` version of `@babel/preset-env` to `3.19`.
 
