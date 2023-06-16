@@ -78,8 +78,8 @@ module.exports = function (api) {
 
 			// Stage 2
 			[require('@babel/plugin-proposal-decorators').default, false],
-			require('@babel/plugin-proposal-export-namespace-from').default,
-			require('@babel/plugin-proposal-numeric-separator').default,
+			require('@babel/plugin-transform-export-namespace-from').default,
+			require('@babel/plugin-transform-numeric-separator').default,
 			// '@babel/plugin-proposal-function-sent',
 			// '@babel/plugin-proposal-throw-expressions',
 
