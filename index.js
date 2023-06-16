@@ -85,15 +85,15 @@ module.exports = function (api) {
 
 			// Stage 3
 			require('@babel/plugin-syntax-dynamic-import').default,
-			[require('@babel/plugin-proposal-class-properties').default, {loose: true}],
-			[require('@babel/plugin-proposal-private-methods').default, {loose: true}],
-			[require('@babel/plugin-proposal-private-property-in-object').default, {loose: true}],
+			[require('@babel/plugin-transform-class-properties').default, {loose: true}],
+			[require('@babel/plugin-transform-private-methods').default, {loose: true}],
+			[require('@babel/plugin-transform-private-property-in-object').default, {loose: true}],
 			// '@babel/plugin-syntax-import-meta',
 			// '@babel/plugin-proposal-json-strings'
 
 			// Soon to be included within pre-env; include here until then
-			require('@babel/plugin-proposal-optional-chaining').default,
-			require('@babel/plugin-proposal-nullish-coalescing-operator').default,
+			require('@babel/plugin-transform-optional-chaining').default,
+			require('@babel/plugin-transform-nullish-coalescing-operator').default,
 
 			!es5Standalone && [
 				require('@babel/plugin-transform-runtime').default,
