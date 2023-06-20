@@ -1,4 +1,4 @@
-## 0.1.3 (June 20, 2023)
+## [unreleased]
 
 * Renamed several used babel plugins from `@babel/plugin-proposal` to `@babel/plugin-transform` due to their renaming in `@babel` version `7.22.0`.
 
