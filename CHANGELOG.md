@@ -1,3 +1,7 @@
+## [unreleased]
+
+* Updated dependencies and renamed several used babel plugins from `@babel/plugin-proposal` to `@babel/plugin-transform`.
+
 ## 0.1.2 (May 17, 2023)
 
 * Updated `core-js` version of `@babel/preset-env` to `3.19`.
