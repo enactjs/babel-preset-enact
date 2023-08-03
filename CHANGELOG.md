@@ -1,3 +1,7 @@
+## unreleased
+
+* Updated `prettier` version to `^3.0.1` and `eslint-plugin-prettier` version to `^5.0.0`.
+
 ## 0.1.4 (July 25, 2023)
 
 * Updated dependencies.
