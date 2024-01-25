@@ -18,12 +18,11 @@ module.exports = {
 			presets: [require.resolve('./index.js')]
 		}
 	},
-	plugins: ['@babel', 'import'],
+	plugins: ['@babel', '@stylistic/js', 'import'],
 	rules: {
 		'block-scoped-var': 'warn',
 		'curly': ['warn', 'multi-line'],
 		'eqeqeq': ['warn', 'smart'],
-		'new-parens': 'warn',
 		'no-alert': 'warn',
 		'no-array-constructor': 'warn',
 		'no-caller': 'error',
@@ -38,9 +37,7 @@ module.exports = {
 		'no-extend-native': 'warn',
 		'no-extra-bind': 'warn',
 		'no-extra-boolean-cast': 'warn',
-		'no-extra-semi': 'off',
 		'no-fallthrough': 'warn',
-		'no-floating-decimal': 'warn',
 		'no-func-assign': 'warn',
 		'no-implied-eval': 'warn',
 		'no-inner-declarations': 'off',
@@ -48,7 +45,6 @@ module.exports = {
 		'no-iterator': 'error',
 		'no-label-var': 'error',
 		'no-labels': 'error',
-		'no-mixed-spaces-and-tabs': ['warn', 'smart-tabs'],
 		'no-global-assign': 'error',
 		'no-unsafe-negation': 'error',
 		'no-new-func': 'error',
@@ -76,7 +72,6 @@ module.exports = {
 			}
 		],
 		'no-throw-literal': 'error',
-		'no-trailing-spaces': 'warn',
 		'no-unexpected-multiline': 'warn',
 		'no-unneeded-ternary': 'warn',
 		'no-unreachable': 'warn',
@@ -92,7 +87,14 @@ module.exports = {
 		'no-var': 'warn',
 		'require-yield': 'off',
 		'use-isnan': 'warn',
-		'wrap-iife': ['error', 'inside'],
+
+		// @stylistic/js plugin https://github.com/eslint-stylistic/eslint-stylistic
+		'@stylistic/js/new-parens': 'warn',
+		'@stylistic/js/no-extra-semi': 'off',
+		'@stylistic/js/no-floating-decimal': 'warn',
+		'@stylistic/js/no-mixed-spaces-and-tabs': ['warn', 'smart-tabs'],
+		'@stylistic/js/no-trailing-spaces': 'warn',
+		'@stylistic/js/wrap-iife': ['error', 'inside'],
 
 		// babel plugin https://github.com/babel/babel/tree/main/eslint/babel-eslint-plugin
 		'@babel/new-cap': [
