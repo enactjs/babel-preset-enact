@@ -1,3 +1,7 @@
+## unreleased
+
+* Replaced deprecated rules with `@stylistic/js` rules.
+
 ## 0.1.6 (December 21, 2023)
 
 * Updated dependencies.
