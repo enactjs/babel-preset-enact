@@ -2,6 +2,10 @@
 
 * Replaced deprecated rules with `@stylistic/js` rules.
 
+## 0.1.7 (february 20, 2024)
+
+* Updated dependencies.
+
 ## 0.1.6 (December 21, 2023)
 
 * Updated dependencies.

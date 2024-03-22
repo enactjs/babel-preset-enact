@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-enact",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Babel preset used by Enact",
   "repository": {
     "type": "git",
