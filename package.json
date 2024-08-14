@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.24.7",
-    "@stylistic/eslint-plugin-js": "^1.5.4",
+    "@stylistic/eslint-plugin-js": "^2.6.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
