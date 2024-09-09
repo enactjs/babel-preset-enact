@@ -20,6 +20,8 @@ const hasJsxRuntime = (() => {
 	}
 })();
 
+const ReactCompilerConfig = {};
+
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
@@ -69,6 +71,7 @@ module.exports = function (api) {
 		plugins: [
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
+			['babel-plugin-react-compiler', ReactCompilerConfig],
 
 			// Stage 1
 			require('@babel/plugin-proposal-export-default-from').default,
