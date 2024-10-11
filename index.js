@@ -27,6 +27,7 @@ module.exports = function (api) {
 	if (api && api.cache) api.cache(() => env + es5Standalone);
 
 	return {
+		sourceType: "unambiguous",
 		presets: [
 			[
 				require('@babel/preset-env').default,
