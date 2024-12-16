@@ -97,13 +97,13 @@ module.exports = {
 		'@stylistic/js/wrap-iife': ['error', 'inside'],
 
 		// babel plugin https://github.com/babel/babel/tree/main/eslint/babel-eslint-plugin
-		'@babel/new-cap': [
-			'error',
-			{
-				newIsCap: true,
-				capIsNew: false
-			}
-		],
+		// '@babel/new-cap': [
+		// 	'error',
+		// 	{
+		// 		newIsCap: true,
+		// 		capIsNew: false
+		// 	}
+		// ],
 		'@babel/no-unused-expressions': 'warn',
 
 		'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
