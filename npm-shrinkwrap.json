@@ -12,6 +12,7 @@
         "@babel/core": "^7.26.0",
         "@babel/plugin-proposal-decorators": "^7.25.9",
         "@babel/plugin-proposal-export-default-from": "^7.25.9",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/plugin-transform-react-inline-elements": "^7.25.9",
         "@babel/plugin-transform-runtime": "^7.25.9",
         "@babel/preset-env": "^7.26.0",
@@ -522,6 +523,17 @@
       },
       "engines": {
         "node": ">=6.9.0"
+      },
+      "peerDependencies": {
+        "@babel/core": "^7.0.0-0"
+      }
+    },
+    "node_modules/@babel/plugin-syntax-dynamic-import": {
+      "version": "7.8.3",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.8.3.tgz",
+      "integrity": "sha512-5gdGbFon+PszYzqs83S3E5mpi7/y/8M9eC90MRTZfduQOYW76ig6SOSPNe41IG5LoP3FGBn2N0RjVDSQiS94kQ==",
+      "dependencies": {
+        "@babel/helper-plugin-utils": "^7.8.0"
       },
       "peerDependencies": {
         "@babel/core": "^7.0.0-0"
@@ -5309,6 +5321,14 @@
       "integrity": "sha512-ryzI0McXUPJnRCvMo4lumIKZUzhYUO/ScI+Mz4YVaTLt04DHNSjEUjKVvbzQjZFLuod/cYEc07mJWhzl6v4DPg==",
       "requires": {
         "@babel/helper-plugin-utils": "^7.25.9"
+      }
+    },
+    "@babel/plugin-syntax-dynamic-import": {
+      "version": "7.8.3",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.8.3.tgz",
+      "integrity": "sha512-5gdGbFon+PszYzqs83S3E5mpi7/y/8M9eC90MRTZfduQOYW76ig6SOSPNe41IG5LoP3FGBn2N0RjVDSQiS94kQ==",
+      "requires": {
+        "@babel/helper-plugin-utils": "^7.8.0"
       }
     },
     "@babel/plugin-syntax-import-assertions": {
