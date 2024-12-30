@@ -5,8 +5,8 @@ node_js:
 sudo: false
 install:
     - npm config set prefer-offline false
-    - npm install -g eslint@8
     - npm install
+    - npm install --save-dev eslint@8   # Temporary installation for using eslint v8 in lint tests
 
 script:
     - npm run lint -- --report-unused-disable-directives --max-warnings 0
