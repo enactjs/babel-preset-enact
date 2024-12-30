@@ -5,6 +5,7 @@ node_js:
 sudo: false
 install:
     - npm config set prefer-offline false
+    - npm install -g eslint@8
     - npm install
 
 script:
