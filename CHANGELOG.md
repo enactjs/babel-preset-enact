@@ -1,3 +1,7 @@
+## unreleased
+
+* Updated eslint configuration for eslint 9.
+
 ## 0.1.9 (January 15, 2025)
 
 * Updated dependencies.
