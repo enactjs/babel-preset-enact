@@ -1,3 +1,7 @@
+## unreleased
+
+* Removed `@babel/plugin-transform-react-inline-elements` to fix production build errors with React 19.
+
 ## 0.1.9 (January 15, 2025)
 
 * Updated dependencies.
