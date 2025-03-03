@@ -115,7 +115,6 @@ module.exports = function (api) {
 
 			require('babel-plugin-dev-expression'),
 			env === 'test' && !es5Standalone && require('babel-plugin-dynamic-import-node').default,
-			env === 'production' && !es5Standalone && require('@babel/plugin-transform-react-inline-elements').default,
 			env === 'production' &&
 				!es5Standalone && [
 					require('babel-plugin-transform-react-remove-prop-types').default,
