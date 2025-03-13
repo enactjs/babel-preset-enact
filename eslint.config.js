@@ -2,11 +2,15 @@ const babelEsLintParser = require('@babel/eslint-parser');
 const babelEsLintPlugin = require('@babel/eslint-plugin');
 const eslint = require('@eslint/js');
 const stylisticEslintPluginJs = require('@stylistic/eslint-plugin-js');
+const eslintConfigPrettier = require('eslint-config-prettier/flat');
 const importPlugin = require('eslint-plugin-import');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const globals = require('globals');
 
 module.exports = [
 	eslint.configs.recommended,
+	eslintPluginPrettierRecommended,
+	eslintConfigPrettier,
 	{
 		languageOptions: {
 			sourceType: 'module',
@@ -23,7 +27,7 @@ module.exports = [
 				...globals.process,
 				...globals.window,
 				...globals.document,
-				...globals.node,
+				...globals.node
 			}
 		}
 	},
@@ -91,9 +95,12 @@ module.exports = [
 			'no-unexpected-multiline': 'warn',
 			'no-unneeded-ternary': 'warn',
 			'no-unreachable': 'warn',
-			'no-unused-vars': ['warn', {
-				caughtErrors: 'none'
-			}],
+			'no-unused-vars': [
+				'warn',
+				{
+					caughtErrors: 'none'
+				}
+			],
 			'no-use-before-define': [
 				'warn',
 				{
@@ -122,11 +129,24 @@ module.exports = [
 			],
 			'@babel/no-unused-expressions': 'warn',
 
-			'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
+			'import/no-unresolved': [
+				'error',
+				{
+					commonjs: true,
+					caseSensitive: true
+				}
+			],
 			'import/named': 'error',
 			'import/first': 'warn',
 			'import/no-duplicates': 'error',
-			'import/extensions': ['warn', 'always', { js: 'never', json: 'always' }],
+			'import/extensions': [
+				'warn',
+				'always',
+				{
+					js: 'never',
+					json: 'always'
+				}
+			],
 			'import/newline-after-import': 'warn',
 			'import/order': [
 				'warn',
