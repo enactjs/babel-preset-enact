@@ -1,4 +1,4 @@
-## unreleased
+## 0.1.11 (March 28, 2025)
 
 * Updated eslint configuration for eslint 9.
 
