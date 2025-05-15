@@ -1,3 +1,7 @@
+## 0.1.12 (May 15, 2025)
+
+* Updated dependencies.
+
 ## 0.1.11 (March 28, 2025)
 
 * Updated eslint configuration for eslint 9.
