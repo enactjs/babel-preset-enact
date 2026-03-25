@@ -1,7 +1,7 @@
 const babelEsLintParser = require('@babel/eslint-parser');
 const babelEsLintPlugin = require('@babel/eslint-plugin');
 const eslint = require('@eslint/js');
-const stylisticEslintPluginJs = require('@stylistic/eslint-plugin-js');
+const stylisticEslintPlugin = require('@stylistic/eslint-plugin');
 const eslintConfigPrettier = require('eslint-config-prettier/flat');
 const importPlugin = require('eslint-plugin-import');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
@@ -34,7 +34,7 @@ module.exports = [
 	{
 		plugins: {
 			'@babel': babelEsLintPlugin,
-			'@stylistic/js': stylisticEslintPluginJs,
+			'@stylistic/js': stylisticEslintPlugin,
 			'import': importPlugin
 		},
 		rules: {
