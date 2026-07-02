@@ -37,12 +37,12 @@
     "@babel/runtime": "^7.29.7",
     "babel-plugin-dev-expression": "^0.2.3",
     "babel-plugin-dynamic-import-node": "^2.3.3",
+  	"babel-plugin-react-compiler": "^1.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.29.7",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "babel-plugin-react-compiler": "^1.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
