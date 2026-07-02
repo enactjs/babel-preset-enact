@@ -67,6 +67,7 @@ module.exports = function (api) {
 			[require('@babel/preset-typescript').default]
 		],
 		plugins: [
+			require('babel-plugin-react-compiler'),
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
 
