@@ -1,3 +1,8 @@
+## [unreleased]
+
+* Added `babel-plugin-react-compiler` to optimize production build with React 19.
+* Added `react-compiler-runtime` to optimize production build with React 18 and less.
+
 ## 0.1.17 (June 23, 2026)
 
 * Updated dependencies.
