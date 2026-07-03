@@ -23,6 +23,8 @@ const hasJsxRuntime = (() => {
 // Opt-in flag, mirrors the ES5 pattern already used in this file
 const useReactCompiler = process.env.REACT_COMPILER === 'true';
 
+console.log('here be compiler ', useReactCompiler);
+
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
