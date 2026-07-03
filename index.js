@@ -19,6 +19,14 @@ const hasJsxRuntime = (() => {
 		return false;
 	}
 })();
+const reactVersion = (() => {
+	try {
+		return require(require.resolve('react/package.json', {paths: [process.cwd()]})).version;
+	} catch (e) {
+		return null;
+	}
+})();
+const reactMajor = reactVersion ? parseInt(reactVersion.split('.')[0], 10) : 19;
 
 // Opt-in flag, mirrors the ES5 pattern already used in this file
 const useReactCompiler = process.env.REACT_COMPILER === 'true';
@@ -74,9 +82,7 @@ module.exports = function (api) {
 			useReactCompiler && [
 				require('babel-plugin-react-compiler'),
 				{
-					// Enact still supports React < 19 in places; adjust once
-					// the framework's React peer range is 19+
-					target: '18'
+					...(reactMajor < 19 ? {target: '18'} : {})
 				}
 			],
 
