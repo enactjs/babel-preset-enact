@@ -20,11 +20,14 @@ const hasJsxRuntime = (() => {
 	}
 })();
 
+// Opt-in flag, mirrors the ES5 pattern already used in this file
+const useReactCompiler = process.env.REACT_COMPILER === 'true';
+
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
 
-	if (api && api.cache) api.cache(() => env + es5Standalone);
+	if (api && api.cache) api.cache(() => env + es5Standalone + useReactCompiler);
 
 	return {
 		presets: [
@@ -67,7 +70,16 @@ module.exports = function (api) {
 			[require('@babel/preset-typescript').default]
 		],
 		plugins: [
-			env === 'production' && !es5Standalone && require('babel-plugin-react-compiler'),
+			// React Compiler must run first in the plugin pipeline
+			useReactCompiler && [
+				require('babel-plugin-react-compiler'),
+				{
+					// Enact still supports React < 19 in places; adjust once
+					// the framework's React peer range is 19+
+					target: '18'
+				}
+			],
+
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
 

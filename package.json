@@ -1,51 +1,52 @@
 {
-  "name": "babel-preset-enact",
-  "version": "0.1.17",
-  "description": "Babel preset used by Enact",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/enactjs/babel-preset-enact.git"
-  },
-  "homepage": "https://github.com/enactjs/babel-preset-enact.git",
-  "license": "Apache-2.0",
-  "files": [
-    "index.js"
-  ],
-  "scripts": {
-    "lint": "eslint .",
-    "fix": "eslint . --fix"
-  },
-  "prettier": {
-    "printWidth": 120,
-    "useTabs": true,
-    "tabWidth": 4,
-    "singleQuote": true,
-    "bracketSpacing": false,
-    "trailingComma": "none",
-    "arrowParens": "avoid",
-    "quoteProps": "consistent"
-  },
-  "dependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/plugin-proposal-decorators": "^7.29.7",
-    "@babel/plugin-proposal-export-default-from": "^7.29.7",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
-    "@babel/runtime": "^7.29.7",
-    "babel-plugin-dev-expression": "^0.2.3",
-    "babel-plugin-dynamic-import-node": "^2.3.3",
-  	"babel-plugin-react-compiler": "^1.0.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
-  },
-  "devDependencies": {
-    "@babel/eslint-plugin": "^7.29.7",
-    "@stylistic/eslint-plugin": "^5.10.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.8.4"
-  }
+	"name": "babel-preset-enact",
+	"version": "0.1.17",
+	"description": "Babel preset used by Enact",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/enactjs/babel-preset-enact.git"
+	},
+	"homepage": "https://github.com/enactjs/babel-preset-enact.git",
+	"license": "Apache-2.0",
+	"files": [
+		"index.js"
+	],
+	"scripts": {
+		"lint": "eslint .",
+		"fix": "eslint . --fix"
+	},
+	"prettier": {
+		"printWidth": 120,
+		"useTabs": true,
+		"tabWidth": 4,
+		"singleQuote": true,
+		"bracketSpacing": false,
+		"trailingComma": "none",
+		"arrowParens": "avoid",
+		"quoteProps": "consistent"
+	},
+	"dependencies": {
+		"@babel/core": "^7.29.7",
+		"@babel/plugin-proposal-decorators": "^7.29.7",
+		"@babel/plugin-proposal-export-default-from": "^7.29.7",
+		"@babel/plugin-syntax-dynamic-import": "^7.8.3",
+		"@babel/plugin-transform-runtime": "^7.29.7",
+		"@babel/preset-env": "^7.29.7",
+		"@babel/preset-react": "^7.29.7",
+		"@babel/preset-typescript": "^7.29.7",
+		"@babel/runtime": "^7.29.7",
+		"babel-plugin-dev-expression": "^0.2.3",
+		"babel-plugin-dynamic-import-node": "^2.3.3",
+		"babel-plugin-react-compiler": "^1.0.0",
+		"babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+		"react-compiler-runtime": "^1.0.0"
+	},
+	"devDependencies": {
+		"@babel/eslint-plugin": "^7.29.7",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-prettier": "^5.5.6",
+		"prettier": "^3.8.4"
+	}
 }
