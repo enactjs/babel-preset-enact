@@ -26,7 +26,7 @@ const reactVersion = (() => {
 		return null;
 	}
 })();
-const reactMajor = parseInt(reactVersion.split('.')[0], 10);
+const reactMajor = reactVersion ? parseInt(reactVersion.split('.')[0], 10) : 19;
 
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
