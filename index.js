@@ -31,7 +31,7 @@ const reactMajor = reactVersion ? parseInt(reactVersion.split('.')[0], 10) : 19;
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
-	const useReactCompiler = (reactMajor >= 19) && !es5Standalone;
+	const useReactCompiler = reactMajor >= 19 && !es5Standalone;
 
 	if (api && api.cache) api.cache(() => env + es5Standalone + useReactCompiler);
 
