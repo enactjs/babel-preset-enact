@@ -47,8 +47,5 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
     "prettier": "^3.8.4"
-  },
-  "peerDependencies": {
-    "react-compiler-runtime": "^1.0.0"
   }
 }
