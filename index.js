@@ -49,6 +49,8 @@ module.exports = function (api) {
 						'web.url-search-params'
 					],
 					forceAllTransforms: es5Standalone,
+					loose: true,
+					modules: env === 'test' && !es5Standalone ? 'commonjs' : false,
 					useBuiltIns: 'entry',
 					corejs: '3.19'
 				}
@@ -67,33 +69,11 @@ module.exports = function (api) {
 			[require('@babel/preset-typescript').default]
 		],
 		plugins: [
-			// Stage 0
-			// '@babel/plugin-proposal-function-bind',
-
 			// Stage 1
 			require('@babel/plugin-proposal-export-default-from').default,
-			// '@babel/plugin-proposal-logical-assignment-operators',
-			// ['@babel/plugin-proposal-pipeline-operator', { 'proposal': 'minimal' }],
-			// '@babel/plugin-proposal-do-expressions',
 
 			// Stage 2
 			[require('@babel/plugin-proposal-decorators').default, false],
-			require('@babel/plugin-transform-export-namespace-from').default,
-			require('@babel/plugin-transform-numeric-separator').default,
-			// '@babel/plugin-proposal-function-sent',
-			// '@babel/plugin-proposal-throw-expressions',
-
-			// Stage 3
-			require('@babel/plugin-syntax-dynamic-import').default,
-			[require('@babel/plugin-transform-class-properties').default, {loose: true}],
-			[require('@babel/plugin-transform-private-methods').default, {loose: true}],
-			[require('@babel/plugin-transform-private-property-in-object').default, {loose: true}],
-			// '@babel/plugin-syntax-import-meta',
-			// '@babel/plugin-proposal-json-strings'
-
-			// Soon to be included within pre-env; include here until then
-			require('@babel/plugin-transform-optional-chaining').default,
-			require('@babel/plugin-transform-nullish-coalescing-operator').default,
 
 			!es5Standalone && [
 				require('@babel/plugin-transform-runtime').default,
@@ -104,7 +84,6 @@ module.exports = function (api) {
 					// https://github.com/babel/babel/issues/10261
 					version: require('@babel/runtime/package.json').version,
 					regenerator: false,
-					useESModules: !es5Standalone,
 					// @remove-on-eject-begin
 					// Undocumented option to use CLI-contained runtime, ensuring
 					// the correct version
@@ -114,7 +93,6 @@ module.exports = function (api) {
 			],
 
 			require('babel-plugin-dev-expression'),
-			env === 'test' && !es5Standalone && require('babel-plugin-dynamic-import-node').default,
 			env === 'production' &&
 				!es5Standalone && [
 					require('babel-plugin-transform-react-remove-prop-types').default,
