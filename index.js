@@ -6,6 +6,9 @@
  */
 const path = require('path');
 
+// Resolve React from the project being built first
+const reactPaths = [process.cwd(), __dirname];
+
 // Check if JSX transform is able
 const hasJsxRuntime = (() => {
 	if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -13,7 +16,7 @@ const hasJsxRuntime = (() => {
 	}
 
 	try {
-		require.resolve('react/jsx-runtime');
+		require.resolve('react/jsx-runtime', {paths: reactPaths});
 		return true;
 	} catch (e) {
 		return false;
@@ -21,7 +24,7 @@ const hasJsxRuntime = (() => {
 })();
 const reactVersion = (() => {
 	try {
-		return require(require.resolve('react/package.json', {paths: [process.cwd()]})).version;
+		return require(require.resolve('react/package.json', {paths: reactPaths})).version;
 	} catch (e) {
 		return null;
 	}
@@ -77,7 +80,18 @@ module.exports = function (api) {
 		],
 		plugins: [
 			// React Compiler must run first in the plugin pipeline
-			useReactCompiler && require('babel-plugin-react-compiler'),
+			useReactCompiler && [
+				require('babel-plugin-react-compiler'),
+				{
+					environment: {
+						// Function outlining hoists callbacks to module scope, but does not account
+						// for the variables they close over. Enact HOCs build their components
+						// inside a factory closure, so outlined callbacks lose access to the
+						// factory's config bindings and throw "x is not defined" at runtime.
+						enableFunctionOutlining: false
+					}
+				}
+			],
 
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
