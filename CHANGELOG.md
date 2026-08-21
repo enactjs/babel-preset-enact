@@ -1,3 +1,7 @@
+## [unreleased]
+
+* Added `babel-plugin-react-compiler` to optimize build with React 19.
+
 ## 0.1.18 (August 21, 2026)
 
 * Updated dependencies.

@@ -6,6 +6,9 @@
  */
 const path = require('path');
 
+// Resolve React from the project being built first
+const reactPaths = [process.cwd(), __dirname];
+
 // Check if JSX transform is able
 const hasJsxRuntime = (() => {
 	if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -13,18 +16,27 @@ const hasJsxRuntime = (() => {
 	}
 
 	try {
-		require.resolve('react/jsx-runtime');
+		require.resolve('react/jsx-runtime', {paths: reactPaths});
 		return true;
 	} catch (e) {
 		return false;
 	}
 })();
+const reactVersion = (() => {
+	try {
+		return require(require.resolve('react/package.json', {paths: reactPaths})).version;
+	} catch (e) {
+		return null;
+	}
+})();
+const reactMajor = reactVersion ? parseInt(reactVersion.split('.')[0], 10) : 19;
 
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
+	const useReactCompiler = reactMajor >= 19 && !es5Standalone;
 
-	if (api && api.cache) api.cache(() => env + es5Standalone);
+	if (api && api.cache) api.cache(() => env + es5Standalone + useReactCompiler);
 
 	return {
 		presets: [
@@ -67,6 +79,20 @@ module.exports = function (api) {
 			[require('@babel/preset-typescript').default]
 		],
 		plugins: [
+			// React Compiler must run first in the plugin pipeline
+			useReactCompiler && [
+				require('babel-plugin-react-compiler'),
+				{
+					environment: {
+						// Function outlining hoists callbacks to module scope, but does not account
+						// for the variables they close over. Enact HOCs build their components
+						// inside a factory closure, so outlined callbacks lose access to the
+						// factory's config bindings and throw "x is not defined" at runtime.
+						enableFunctionOutlining: false
+					}
+				}
+			],
+
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
 
