@@ -6,20 +6,6 @@
  */
 const path = require('path');
 
-// Check if JSX transform is able
-const hasJsxRuntime = (() => {
-	if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
-		return false;
-	}
-
-	try {
-		require.resolve('react/jsx-runtime');
-		return true;
-	} catch (e) {
-		return false;
-	}
-})();
-
 module.exports = function (api) {
 	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	const es5Standalone = process.env.ES5 && process.env.ES5 !== 'false';
@@ -27,6 +13,13 @@ module.exports = function (api) {
 	if (api && api.cache) api.cache(() => env + es5Standalone);
 
 	return {
+		// Equivalent of `loose: true` on the class properties and private methods/fields transforms.
+		// Babel 8 requires the same loose mode for all of them, which assumptions guarantee.
+		// https://babeljs.io/docs/assumptions
+		assumptions: {
+			privateFieldsAsProperties: true,
+			setPublicClassFields: true
+		},
 		presets: [
 			[
 				require('@babel/preset-env').default,
@@ -35,7 +28,28 @@ module.exports = function (api) {
 						// Exclude transforms that make all code slower
 						'transform-typeof-symbol',
 						// Exclude chunky/costly transforms
-						'transform-regenerator',
+						'transform-regenerator'
+					],
+					forceAllTransforms: es5Standalone
+				}
+			],
+			[
+				require('@babel/preset-react').default,
+				{
+					// Adds component stack to warning messages
+					// Adds __self attribute to JSX which React will use for some warnings
+					development: env !== 'production' && !es5Standalone,
+					runtime: 'automatic'
+				}
+			],
+			[require('@babel/preset-typescript').default]
+		],
+		plugins: [
+			[
+				require('babel-plugin-polyfill-corejs3'),
+				{
+					method: 'entry-global',
+					exclude: [
 						// Ignore web features since window and DOM is not available
 						// in a V8 snapshot blob.
 						// TODO: investigates ways to include but delay loading.
@@ -48,25 +62,9 @@ module.exports = function (api) {
 						'web.url.to-json',
 						'web.url-search-params'
 					],
-					forceAllTransforms: es5Standalone,
-					useBuiltIns: 'entry',
-					corejs: '3.19'
+					version: '3.19'
 				}
 			],
-			[
-				require('@babel/preset-react').default,
-				{
-					// Adds component stack to warning messages
-					// Adds __self attribute to JSX which React will use for some warnings
-					development: env !== 'production' && !es5Standalone,
-					// Will use the native built-in instead of trying to polyfill
-					// behavior for any plugins that require one.
-					...(!hasJsxRuntime ? {useBuiltIns: true} : {runtime: 'automatic'})
-				}
-			],
-			[require('@babel/preset-typescript').default]
-		],
-		plugins: [
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
 
@@ -84,10 +82,9 @@ module.exports = function (api) {
 			// '@babel/plugin-proposal-throw-expressions',
 
 			// Stage 3
-			require('@babel/plugin-syntax-dynamic-import').default,
-			[require('@babel/plugin-transform-class-properties').default, {loose: true}],
-			[require('@babel/plugin-transform-private-methods').default, {loose: true}],
-			[require('@babel/plugin-transform-private-property-in-object').default, {loose: true}],
+			require('@babel/plugin-transform-class-properties').default,
+			require('@babel/plugin-transform-private-methods').default,
+			require('@babel/plugin-transform-private-property-in-object').default,
 			// '@babel/plugin-syntax-import-meta',
 			// '@babel/plugin-proposal-json-strings'
 
@@ -98,13 +95,10 @@ module.exports = function (api) {
 			!es5Standalone && [
 				require('@babel/plugin-transform-runtime').default,
 				{
-					corejs: false,
-					helpers: true,
+					moduleName: '@babel/runtime',
 					// Explicitly resolve runtime version to avoid issue
 					// https://github.com/babel/babel/issues/10261
 					version: require('@babel/runtime/package.json').version,
-					regenerator: false,
-					useESModules: !es5Standalone,
 					// @remove-on-eject-begin
 					// Undocumented option to use CLI-contained runtime, ensuring
 					// the correct version
@@ -113,8 +107,8 @@ module.exports = function (api) {
 				}
 			],
 
-			require('babel-plugin-dev-expression'),
-			env === 'test' && !es5Standalone && require('babel-plugin-dynamic-import-node').default,
+			// Replaces `__DEV__` and strips `invariant`/`warning` messages from production builds
+			require('./plugins/dev-expression'),
 			env === 'production' &&
 				!es5Standalone && [
 					require('babel-plugin-transform-react-remove-prop-types').default,
