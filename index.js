@@ -107,6 +107,8 @@ module.exports = function (api) {
 				}
 			],
 
+			// Replaces `__DEV__` and strips `invariant`/`warning` messages from production builds
+			require('./plugins/dev-expression'),
 			env === 'production' &&
 				!es5Standalone && [
 					require('babel-plugin-transform-react-remove-prop-types').default,

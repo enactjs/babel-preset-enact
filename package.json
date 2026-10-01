@@ -9,7 +9,8 @@
   "homepage": "https://github.com/enactjs/babel-preset-enact.git",
   "license": "Apache-2.0",
   "files": [
-    "index.js"
+    "index.js",
+    "plugins"
   ],
   "scripts": {
     "lint": "eslint .",
