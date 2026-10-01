@@ -62,7 +62,7 @@ module.exports = function (api) {
 						'web.url.to-json',
 						'web.url-search-params'
 					],
-					version: require('./package.json').dependencies['core-js']
+					version: '3.19'
 				}
 			],
 			// Stage 0
