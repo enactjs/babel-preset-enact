@@ -26,21 +26,21 @@
     "quoteProps": "consistent"
   },
   "dependencies": {
-    "@babel/core": "^8.0.1",
+    "@babel/core": "^8.0.6",
     "@babel/plugin-proposal-decorators": "^8.0.2",
     "@babel/plugin-proposal-export-default-from": "^8.0.1",
-    "@babel/plugin-transform-runtime": "^8.0.1",
-    "@babel/preset-env": "^8.0.2",
+    "@babel/plugin-transform-runtime": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.1",
-    "@babel/runtime": "^8.0.0",
+    "@babel/runtime": "^8.0.5",
     "@eslint/js": "^10.0.1",
     "babel-plugin-polyfill-corejs3": "^1.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "globals": "^17.7.0"
   },
   "devDependencies": {
-    "@babel/eslint-plugin": "^8.0.1",
+    "@babel/eslint-plugin": "^8.0.6",
     "@stylistic/eslint-plugin": "^5.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import-x": "^4.17.1",
