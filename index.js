@@ -13,6 +13,13 @@ module.exports = function (api) {
 	if (api && api.cache) api.cache(() => env + es5Standalone);
 
 	return {
+		// Equivalent of `loose: true` on the class properties and private methods/fields transforms.
+		// Babel 8 requires the same loose mode for all of them, which assumptions guarantee.
+		// https://babeljs.io/docs/assumptions
+		assumptions: {
+			privateFieldsAsProperties: true,
+			setPublicClassFields: true
+		},
 		presets: [
 			[
 				require('@babel/preset-env').default,
@@ -75,9 +82,9 @@ module.exports = function (api) {
 			// '@babel/plugin-proposal-throw-expressions',
 
 			// Stage 3
-			[require('@babel/plugin-transform-class-properties').default, {loose: true}],
-			[require('@babel/plugin-transform-private-methods').default, {privateFieldsAsProperties: true}],
-			[require('@babel/plugin-transform-private-property-in-object').default, {privateFieldsAsProperties: true}],
+			require('@babel/plugin-transform-class-properties').default,
+			require('@babel/plugin-transform-private-methods').default,
+			require('@babel/plugin-transform-private-property-in-object').default,
 			// '@babel/plugin-syntax-import-meta',
 			// '@babel/plugin-proposal-json-strings'
 
@@ -88,7 +95,7 @@ module.exports = function (api) {
 			!es5Standalone && [
 				require('@babel/plugin-transform-runtime').default,
 				{
-					corejs: false,
+					moduleName: '@babel/runtime',
 					// Explicitly resolve runtime version to avoid issue
 					// https://github.com/babel/babel/issues/10261
 					version: require('@babel/runtime/package.json').version,
