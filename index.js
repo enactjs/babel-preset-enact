@@ -27,6 +27,10 @@ module.exports = function (api) {
 	if (api && api.cache) api.cache(() => env + es5Standalone);
 
 	return {
+		assumptions: {
+			setPublicClassFields: true,
+			privateFieldsAsProperties: true
+		},
 		presets: [
 			[
 				require('@babel/preset-env').default,
@@ -35,22 +39,9 @@ module.exports = function (api) {
 						// Exclude transforms that make all code slower
 						'transform-typeof-symbol',
 						// Exclude chunky/costly transforms
-						'transform-regenerator',
-						// Ignore web features since window and DOM is not available
-						// in a V8 snapshot blob.
-						// TODO: investigates ways to include but delay loading.
-						'web.dom-collections.for-each',
-						'web.dom-collections.iterator',
-						'web.immediate',
-						'web.queue-microtask',
-						'web.timers',
-						'web.url',
-						'web.url.to-json',
-						'web.url-search-params'
+						'transform-regenerator'
 					],
-					forceAllTransforms: es5Standalone,
-					useBuiltIns: 'entry',
-					corejs: '3.19'
+					forceAllTransforms: es5Standalone
 				}
 			],
 			[
@@ -61,12 +52,29 @@ module.exports = function (api) {
 					development: env !== 'production' && !es5Standalone,
 					// Will use the native built-in instead of trying to polyfill
 					// behavior for any plugins that require one.
-					...(!hasJsxRuntime ? {useBuiltIns: true} : {runtime: 'automatic'})
+					runtime: hasJsxRuntime ? 'automatic' : 'classic'
 				}
 			],
 			[require('@babel/preset-typescript').default]
 		],
 		plugins: [
+			// Replaces preset-env `useBuiltIns: 'entry'` + `corejs`, removed in Babel 8.
+			[
+				// eslint-disable-next-line import/no-unresolved
+				require('babel-plugin-polyfill-corejs3').default,
+				{
+					'method': 'entry-global',
+					// Ignore web features since window and DOM is not available
+					// in a V8 snapshot blob.
+					'exclude': [/^web\./],
+					// Keep helper imports on @babel/runtime. preset-env set this
+					// when useBuiltIns lived inside the preset.
+					'#__secret_key__@babel/preset-env__compatibility': {
+						noRuntimeName: true
+					}
+				}
+			],
+
 			// Stage 0
 			// '@babel/plugin-proposal-function-bind',
 
@@ -84,10 +92,9 @@ module.exports = function (api) {
 			// '@babel/plugin-proposal-throw-expressions',
 
 			// Stage 3
-			require('@babel/plugin-syntax-dynamic-import').default,
-			[require('@babel/plugin-transform-class-properties').default, {loose: true}],
-			[require('@babel/plugin-transform-private-methods').default, {loose: true}],
-			[require('@babel/plugin-transform-private-property-in-object').default, {loose: true}],
+			require('@babel/plugin-transform-class-properties').default,
+			require('@babel/plugin-transform-private-methods').default,
+			require('@babel/plugin-transform-private-property-in-object').default,
 			// '@babel/plugin-syntax-import-meta',
 			// '@babel/plugin-proposal-json-strings'
 
@@ -98,13 +105,9 @@ module.exports = function (api) {
 			!es5Standalone && [
 				require('@babel/plugin-transform-runtime').default,
 				{
-					corejs: false,
-					helpers: true,
 					// Explicitly resolve runtime version to avoid issue
 					// https://github.com/babel/babel/issues/10261
 					version: require('@babel/runtime/package.json').version,
-					regenerator: false,
-					useESModules: !es5Standalone,
 					// @remove-on-eject-begin
 					// Undocumented option to use CLI-contained runtime, ensuring
 					// the correct version
@@ -113,7 +116,7 @@ module.exports = function (api) {
 				}
 			],
 
-			require('babel-plugin-dev-expression'),
+			require('./dev-expression'),
 			env === 'test' && !es5Standalone && require('babel-plugin-dynamic-import-node').default,
 			env === 'production' &&
 				!es5Standalone && [

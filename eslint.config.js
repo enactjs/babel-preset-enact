@@ -8,6 +8,9 @@ const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommen
 const globals = require('globals');
 
 module.exports = [
+	{
+		ignores: ['dev-expression.js']
+	},
 	eslint.configs.recommended,
 	eslintPluginPrettierRecommended,
 	eslintConfigPrettier,

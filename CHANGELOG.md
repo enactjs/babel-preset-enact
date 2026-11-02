@@ -1,3 +1,7 @@
+## Unreleased
+
+* Updated the preset for Babel 8. Polyfill injection moved from `preset-env` `useBuiltIns` to `babel-plugin-polyfill-corejs3`.
+
 ## 0.1.18 (August 21, 2026)
 
 * Updated dependencies.
