@@ -1,4 +1,4 @@
-## 1.0.0 (November 3, 2026)
+## 1.0.0 (November 4, 2026)
 
 * Updated babel to version 8
 
