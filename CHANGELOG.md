@@ -1,3 +1,11 @@
+## 1.0.1 (November 9, 2026)
+
+* Republished 1.0.0 with corrected package contents. No functional changes.
+
+## 1.0.0 (November 4, 2026)
+
+* Updated babel to version 8
+
 ## 0.1.18 (August 21, 2026)
 
 * Updated dependencies.
