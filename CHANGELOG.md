@@ -1,4 +1,4 @@
-## 1.0.1 (November 4, 2026)
+## 1.0.1 (November 9, 2026)
 
 * Republished 1.0.0 with corrected package contents. No functional changes.
 
